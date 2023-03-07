@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseSessionController;
 use App\Http\Controllers\UserCourseController;
+use App\Http\Controllers\ViewController;
 use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Template.navbar');
-});
+Route::get('/', [ViewController::class, 'initialPage']);
 Route::resource('course', CourseController::class);
 Route::resource('coursesession', CourseSessionController::class);
 Route::resource('usercourse', UserCourseController::class);
