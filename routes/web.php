@@ -19,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ViewController::class, 'initialPage']);
+
+Route::get('/login', [ViewController::class, 'showLoginPage']);
+Route::get('/register', [ViewController::class, 'showRegisterPage']);
+Route::post('/login', [ViewController::class, 'showLoginPage']);
+Route::post('/register', [ViewController::class, 'showRegisterPage']);
+
 Route::resource('course', CourseController::class);
 Route::resource('coursesession', CourseSessionController::class);
 Route::resource('usercourse', UserCourseController::class);
