@@ -17,12 +17,17 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $genderfake = fake()->numberBetween(0, 1);
+        $rolefake = fake()->numberBetween(0, 1);
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'user_name' => fake()->name(),
+            'user_email' => fake()->unique()->safeEmail(),
+            'user_gender' => $genderfake == 1 ? 'Male' : 'Female',
+            'user_password' => bcrypt('testpassword'), // password
+            'user_profile_image' => "default profile.png",
+            'user_role' => $rolefake == 1 ? 'Member' : 'Admin',
             'remember_token' => Str::random(10),
+            'created_at' => now(),
         ];
     }
 
