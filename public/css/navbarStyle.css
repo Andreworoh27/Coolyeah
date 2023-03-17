@@ -1,0 +1,133 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 13vh;
+    padding-left: 1%;
+    background-color: lightskyblue;
+}
+
+.navbar-brand {
+    width: 12%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 5%;
+}
+
+.navbar-brand img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.navbar-content {
+    width: 89%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10%;
+}
+
+.dropdown {
+    margin: -1vw;
+    margin-right: 20px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 11vw;
+    box-shadow: 0vw 0.52vw 1vw 0vw rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-left: -12%;
+}
+
+.dropdown-menu a {
+    color: black;
+    padding: 0.8vw 1vw;
+    text-decoration: none;
+    display: block;
+    font-size: 1vw;
+    border-radius: 5%;
+}
+
+.dropdown-menu a:hover {
+    background-color: darkcyan;
+}
+
+a.sign:hover{
+    background-color: lightblue;
+    color: white;
+    border-radius: 20%;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    border-radius: 5%;
+}
+
+form{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    border-radius: 5px;
+    outline-color: none;
+}
+
+form.searchbox{
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+}
+
+.searchbox input{
+    background: transparent;
+    flex: 1;
+    border: none;
+    border-radius: 60px;
+    outline: none;
+    padding: 20px 20px;
+    font-size: 20px;
+    color: black;
+    outline-color: lightskyblue;
+}
+
+::placeholder{
+    color: white;
+}
+
+.searchbox button img{
+    width: 25px;
+}
+
+.searchbox button{
+    border: 0;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    background: lightseagreen;
+    cursor: pointer;
+}
+
+.navbar-menu-container{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+a.sign {
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    padding: 5px;
+    margin-left: 10px;
+    color: lightgoldenrodyellow;
+}
+
