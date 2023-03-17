@@ -11,10 +11,20 @@ class ViewController extends Controller
     //
     public function initialPage()
     {
-        if (!Auth::check()) {
+        if (Auth::check()) {
             return view('Home.home')->with('courses', Course::all());
         } else {
             return view('Template.navbar');
         }
+    }
+
+    public function showLoginPage()
+    {
+        return view('Authentication.login');
+    }
+
+    public function showRegisterPage()
+    {
+        return view('Authentication.register');
     }
 }
