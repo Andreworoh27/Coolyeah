@@ -3,29 +3,30 @@
 @section('title', 'Sign In')
 
 @section('content')
-    <link rel="stylesheet" href="/css/signUp.css">
-    <div class="sign-container mt-5">
-        <h2 style="color: black">Game<span style="color: red">Slot</span></h2>
-        <h5 class="mt-2">Sign Up Your Account</h5>
-        <div class="d-flex justify-content-center align-content-center" style="margin-top: 50px">
-            <form action="/login" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email">
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="/css/loginStyle.css">
+        <div class="center">
+            <h1>Login</h1>
+            <form method="post">
+                <div class="txt">
+                    <input type="text" required>
+                    <span></span>
+                    <label>Email</label>
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password">
+                <div class="txt">
+                    <input type="password" required>
+                    <span></span>
+                    <label>Password</label>
                 </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="remember_me" name="remember_me">
-                    <label class="form-check-label" for="remember_me">Remember me</label>
+                <div class="remember">
+                    <input type="checkbox">
+                    <label class="checkbox-label" for="">Remember Me</label>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                @if ($errors->any())
-                    <div style="color:red">{{ $errors->first() }}</div>
-                @endif
+                <div class="register">
+                    <p>Don't have a account <a href="/register">Register</a></p>
+                </div>
+                <input type="submit" value="Login">
             </form>
         </div>
     @endsection

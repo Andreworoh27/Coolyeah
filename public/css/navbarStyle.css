@@ -69,13 +69,13 @@ a.sign:hover{
     border-radius: 5%;
 }
 
-form{
+/* form{
     margin-left: auto;
     margin-right: auto;
     display: flex;
     border-radius: 5px;
     outline-color: none;
-}
+} */
 
 form.searchbox{
     margin-left: auto;

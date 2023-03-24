@@ -13,7 +13,7 @@
 <body>
   <nav>
     <div class="navbar-brand">
-      <a href=""><img src="img/Coolyeah.png"></a>
+      <a href="/home"><img src="img/Coolyeah.png"></a>
     </div>
   
     <div class="navbar-content">
