@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\AuthenticationtionController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseSessionController;
 use App\Http\Controllers\UserCourseController;
@@ -22,9 +24,10 @@ Route::get('/', [ViewController::class, 'initialPage']);
 
 Route::get('/login', [ViewController::class, 'showLoginPage']);
 Route::get('/register', [ViewController::class, 'showRegisterPage']);
-Route::post('/login', [ViewController::class, 'showLoginPage']);
+Route::post('/login', [AuthenticationController::class, 'login']);
 Route::post('/register', [ViewController::class, 'showRegisterPage']);
-
+Route::get('/logout', [AuthenticationController::class, 'logout']);
 Route::resource('course', CourseController::class);
-Route::resource('coursesession', CourseSessionController::class);
-Route::resource('usercourse', UserCourseController::class);
+// Route::resource('course', CourseController::class);
+// Route::resource('coursesession', CourseSessionController::class);
+// Route::resource('usercourse', UserCourseController::class);

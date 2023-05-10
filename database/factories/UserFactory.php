@@ -20,13 +20,12 @@ class UserFactory extends Factory
         $genderfake = fake()->numberBetween(0, 1);
         $rolefake = fake()->numberBetween(0, 1);
         return [
-            'user_name' => fake()->name(),
-            'user_email' => fake()->unique()->safeEmail(),
-            'user_gender' => $genderfake == 1 ? 'Male' : 'Female',
-            'user_password' => bcrypt('testpassword'), // password
-            'user_profile_image' => "default profile.png",
-            'user_role' => $rolefake == 1 ? 'Member' : 'Admin',
-            'remember_token' => Str::random(10),
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'gender' => $genderfake == 1 ? 'Male' : 'Female',
+            'password' => bcrypt('testpassword'), // password
+            'profile_image' => "default profile.png",
+            'role' => $rolefake == 1 ? 'Member' : 'Admin',
             'created_at' => now(),
         ];
     }

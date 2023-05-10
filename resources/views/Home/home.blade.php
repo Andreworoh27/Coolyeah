@@ -1,7 +1,8 @@
-@extends('navbar')
+@extends('Template.navbar')
 
-@section('title', 'home')
+@section('title', 'Home')
 
 @section('content')
-    
+    {{-- {{ dd(Auth::user()->name) }} --}}
+    <div>ini home page</div>
 @endsection
