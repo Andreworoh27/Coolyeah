@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('course_name');
             $table->string('course_description', 500);
+            $table->string('course_image')->nullable();
+            $table->double('course_rating')->nullable();
+            $table->bigInteger('course_subscriber')->nullable();
             $table->timestamps();
         });
     }

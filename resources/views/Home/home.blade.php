@@ -4,5 +4,14 @@
 
 @section('content')
     {{-- {{ dd(Auth::user()->name) }} --}}
-    <div>ini home page</div>
+    @foreach ($courses as $course)
+        <a href="{{ url('course/' . $course->id) }}">
+            {{-- <img src="{{ Storage::url('Course Image/' . $course->course_image) }}"> --}}
+            <div>course : {{ $course->id }}</div>
+            <div>{{ $course->course_name }}</div>
+            <div>{{ $course->course_description }}</div>
+            <br>
+            <br>
+        </a>
+    @endforeach
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -14,7 +15,7 @@ class CourseController extends Controller
     public function index()
     {
         //
-        return view('Home.home');
+        return view('Home.home')->with('courses', Course::all());
     }
 
     /**
@@ -47,6 +48,7 @@ class CourseController extends Controller
     public function show($id)
     {
         //
+        return view('Course.CourseDetail')->with('course',Course::find($id));
     }
 
     /**

@@ -20,6 +20,9 @@ class CourseFactory extends Factory
             //
             'course_name' => fake()->sentence(),
             'course_description' => fake()->paragraphs(1, true),
+            'course_image' => null,
+            'course_rating' => null,
+            'course_subscriber' => null,
             'created_at' => now(),
             'updated_at' => now()
         ];
