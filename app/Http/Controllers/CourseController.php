@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\UserCourse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -48,7 +50,15 @@ class CourseController extends Controller
     public function show($id)
     {
         //
-        return view('Course.CourseDetail')->with('course',Course::find($id));
+        $subscribeCheck = UserCourse::where('course_id', $id)->where('user_id', Auth::user()->id)->first();
+        // dd($subscribeCheck);
+        if ($subscribeCheck) {
+            $subscribeCheck = true;
+        } else {
+            $subscribeCheck = false;
+        }
+        $courseInfo = [Course::find($id), $subscribeCheck];
+        return view('Course.CourseDetail')->with('CourseInfo', $courseInfo);
     }
 
     /**

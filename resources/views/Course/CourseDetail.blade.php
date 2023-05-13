@@ -3,11 +3,21 @@
 @section('title', 'Home')
 
 @section('content')
-<div>Course Detail page: </div>
-{{-- <img src="{{ Storage::url('Course Image/' . $course->course_image) }}"> --}}
-<div>{{$course->id}}</div>
-<div>{{$course->course_name}}</div>
-<div>{{$course->course_description}}</div>
-<div>{{$course->course_rating}}</div>
-<div>{{$course->course_subscriber}}</div>
+    {{-- {{dd($CourseInfo)}} --}}
+    @php
+        $course = $CourseInfo[0];
+        $subscribe = $CourseInfo[1];
+    @endphp
+    <div>Course Detail page: </div>
+    {{-- <img src="{{ Storage::url('Course Image/' . $course->course_image) }}"> --}}
+    <div>{{ $course->id }}</div>
+    <div>{{ $course->course_name }}</div>
+    <div>{{ $course->course_description }}</div>
+    <div>{{ $course->course_rating }}</div>
+    <div>{{ $course->course_subscriber }}</div>
+    @if ($subscribe == false)
+    <a href="{{ url('course/subscribe/' . $course->id) }}">Subscribe Course</a>
+    @else
+    <div>Subscribed</div>
+    @endif
 @endsection

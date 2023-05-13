@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserCourse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserCourseController extends Controller
 {
@@ -80,5 +82,27 @@ class UserCourseController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Store a newly subscribed course
+     */
+    public function subscribeCourse(Request $request){
+        $courseId = $request->route('courseId');
+        $userId = Auth::user()->id;
+        $userCourse = new UserCourse;
+        $userCourse->user_id = $userId;
+        $userCourse->course_id = $courseId;
+        $userCourse->created_at = now();
+        $userCourse->save();
+        return redirect()->back();
+
+    }
+
+    /**
+     * check if the user already subscribe the course
+     */
+    public function subscribeCheck(){
+        
     }
 }

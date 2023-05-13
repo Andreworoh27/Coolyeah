@@ -28,6 +28,7 @@ Route::post('/login', [AuthenticationController::class, 'login']);
 Route::post('/register', [ViewController::class, 'showRegisterPage']);
 Route::get('/logout', [AuthenticationController::class, 'logout']);
 Route::resource('course', CourseController::class);
+Route::get('course/subscribe/{courseId}', [UserCourseController::class, 'subscribeCourse']);
 // Route::resource('course', CourseController::class);
 // Route::resource('coursesession', CourseSessionController::class);
 // Route::resource('usercourse', UserCourseController::class);
