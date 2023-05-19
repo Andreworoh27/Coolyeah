@@ -40,7 +40,17 @@
                     <a id="Login" href="/login" class="navbar-menu sign">Login</a>
                     <a id="SignUp" href="/register" class="navbar-menu sign">Sign Up</a>
                 @else
-                    <a id="Logout" href="/logout">logout</a>
+                    <div class="dropdown">
+                        {{-- {{dd(Storage::url('Profile Image/' . Auth::user()->image))}} --}}
+                        <img class="profilepic" src="img/User Profiles/default profile.png">
+                        <div class="dropdown-menu">
+                            <b>Hi, {{ auth()->user()->name }}</b>
+                            <hr class="solidmenu">
+                            <a href="/user">Your Profile</a>
+                            <a href="/transactionhistory">Transaction History</a>
+                            <a href="/logout">Log Out</a>
+                        </div>
+                    </div>
                 @endif
             </div>
         </div>
