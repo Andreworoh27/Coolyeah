@@ -10,6 +10,6 @@ class CourseSession extends Model
     use HasFactory;
     public function course()
     {
-        $this->belongsTo(Course::class, "session_id", "session_id");
+        return $this->belongsTo(Course::class, "session_id", "session_id");
     }
 }

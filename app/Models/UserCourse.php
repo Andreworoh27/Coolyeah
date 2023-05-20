@@ -11,10 +11,10 @@ class UserCourse extends Model
 
     public function user()
     {
-        $this->belongsTo(User::class, "user_id", "user_id");
+        return $this->belongsTo(User::class, "user_id", "id");
     }
     public function course()
     {
-        $this->belongsTo(Course::class, "course_id", "course_id");
+        return $this->belongsTo(Course::class, "course_id", "id");
     }
 }
