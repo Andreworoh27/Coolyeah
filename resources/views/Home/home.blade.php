@@ -9,12 +9,16 @@
                 <a href="{{ url('course/' . $course->id) }}">
                     @if ($course == $courses[0])
                         <div class="carousel-item active">
-                            <img src="img/Courses/DataStructures.jpg" class="d-block w-100" alt="Course-image">
+                            <img src="{{ Storage::url('img/Courses/' . $course->course_image) }}" class="d-block w-100"
+                                alt="Course-image">
+                            <div>{{ $course->id }}</div>
                             <div>{{ $course->course_name }}</div>
                         </div>
                     @else
                         <div class="carousel-item">
-                            <img src="img/Courses/DataStructures.jpg" class="d-block w-100" alt="Course-image">
+                            <img src="{{ Storage::url('img/Courses/' . $course->course_image) }}" class="d-block w-100"
+                                alt="Course-image">
+                            <div>{{ $course->id }}</div>
                             <div>{{ $course->course_name }}</div>
                         </div>
                     @endif

@@ -17,7 +17,7 @@
 <body>
     <nav>
         <div class="navbar-brand">
-            <a href="/"><img src="img/Coolyeah.png"></a>
+            <a href="/"><img src="{{ Storage::url('img/Coolyeah.png') }}"></a>
         </div>
 
         <div class="navbar-content">
@@ -33,7 +33,7 @@
             </div>
             <form class="searchbox" role="search" method="GET" action="/search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
-                <button class="btn-outline-success" type="submit"><img src="img/search.png"></button>
+                <button class="btn-outline-success" type="submit"><img src="{{ Storage::url('img/search.png') }}"></button>
             </form>
             <div class="navbar-menu-container">
                 @if (Auth::check() == false)
@@ -42,7 +42,7 @@
                 @else
                     <div class="dropdown">
                         {{-- {{dd(Storage::url('Profile Image/' . Auth::user()->image))}} --}}
-                        <img class="profilepic" src="img/User Profiles/default profile.png">
+                        <img class="profilepic" src="{{ Storage::url('img/User Profiles/'.auth()->user()->profile_image) }}">
                         <div class="dropdown-menu">
                             <b>Hi, {{ auth()->user()->name }}</b>
                             <hr class="solidmenu">
