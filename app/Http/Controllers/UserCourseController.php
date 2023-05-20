@@ -84,12 +84,18 @@ class UserCourseController extends Controller
     public function destroy($id)
     {
         //
+        // dd("in");
+        $courseId = $id;
+        $userId = Auth::user()->id;
+        UserCourse::where('course_id', $id)->where('user_id', $userId)->delete();
+        return redirect()->back();
     }
 
     /**
      * Store a newly subscribed course
      */
-    public function subscribeCourse(Request $request){
+    public function subscribeCourse(Request $request)
+    {
         $courseId = $request->route('courseId');
         $userId = Auth::user()->id;
         $userCourse = new UserCourse;
@@ -98,13 +104,12 @@ class UserCourseController extends Controller
         $userCourse->created_at = now();
         $userCourse->save();
         return redirect()->back();
-
     }
 
     /**
      * check if the user already subscribe the course
      */
-    public function subscribeCheck(){
-
+    public function subscribeCheck()
+    {
     }
 }
