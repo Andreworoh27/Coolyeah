@@ -16,6 +16,8 @@ class UserCourseController extends Controller
     public function index()
     {
         //
+        $usercourses = UserCourse::all();
+        return view('Account.mycoursepage')->with('usercourses', $usercourses);
     }
 
     /**
@@ -103,6 +105,6 @@ class UserCourseController extends Controller
      * check if the user already subscribe the course
      */
     public function subscribeCheck(){
-        
+
     }
 }

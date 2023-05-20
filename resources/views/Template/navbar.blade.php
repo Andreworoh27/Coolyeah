@@ -47,7 +47,7 @@
                             <b>Hi, {{ auth()->user()->name }}</b>
                             <hr class="solidmenu">
                             <a href="/user">Your Profile</a>
-                            <a href="/transactionhistory">Transaction History</a>
+                            <a href="/usercourse">My Courses</a>
                             <a href="/logout">Log Out</a>
                         </div>
                     </div>
