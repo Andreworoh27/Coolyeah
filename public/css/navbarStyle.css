@@ -2,7 +2,7 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 13vh;
+    height: 11vh;
     padding-left: 1%;
     background-color: lightskyblue;
 }
@@ -17,7 +17,7 @@ nav {
 }
 
 .navbar-brand img {
-    width: 100%;
+    width: 80%;
     border-radius: 50%;
 }
 
@@ -31,26 +31,25 @@ nav {
 }
 
 .dropdown {
-    margin: -1vw;
+    margin: 1vw;
     margin-right: 20px;
 }
 
 .dropdown-menu {
-    display: none;
+    display: flex;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 11vw;
+    min-width: 10vw;
     box-shadow: 0vw 0.52vw 1vw 0vw rgba(0, 0, 0, 0.2);
     z-index: 1;
-    margin-left: -12%;
 }
 
-.dropdown-menu a {
+.dropdown-menu a{
     color: black;
     padding: 0.8vw 1vw;
     text-decoration: none;
     display: block;
-    font-size: 1vw;
+    font-size: 12px;
     border-radius: 5%;
 }
 

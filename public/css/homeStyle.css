@@ -1,0 +1,32 @@
+.outside-carousel{
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.carousel-slide{
+    margin-top: 3%;
+    justify-content: center;
+    height: 50%;
+    width: 50%;
+}
+
+.carousel-item-active{
+    font-size: 12px;
+}
+
+.outside-course-list{
+    height: 60vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    flex-direction: column;
+}
+
