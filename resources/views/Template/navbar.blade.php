@@ -38,7 +38,7 @@
             <div class="navbar-menu-container">
                 @if (Auth::check() == false)
                     <a id="Login" href="/login" class="navbar-menu sign">Login</a>
-                    <a id="SignUp" href="/register" class="navbar-menu sign">Sign Up</a>
+                    <a id="SignUp" href="/user/create" class="navbar-menu sign">Sign Up</a>
                 @else
                     <div class="dropdown">
                         {{-- {{dd(Storage::url('Profile Image/' . Auth::user()->image))}} --}}
