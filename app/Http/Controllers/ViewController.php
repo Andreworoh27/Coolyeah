@@ -29,4 +29,9 @@ class ViewController extends Controller
     {
         return view('Authentication.register');
     }
+
+    public function showManageCoursePage()
+    {
+        return view('Course.manageCourse')->with('Courses', Course::all());
+    }
 }
