@@ -83,8 +83,7 @@ class UserCourseController extends Controller
      */
     public function destroy($id)
     {
-        //
-        // dd("in");
+
         $courseId = $id;
         $userId = Auth::user()->id;
         UserCourse::where('course_id', $id)->where('user_id', $userId)->delete();

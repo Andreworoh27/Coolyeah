@@ -32,6 +32,4 @@ Route::resource('course', CourseController::class);
 Route::get('course/subscribe/{courseId}', [UserCourseController::class, 'subscribeCourse']);
 Route::resource('user', UserController::class);
 Route::resource('usercourse', UserCourseController::class);
-// Route::resource('course', CourseController::class);
-// Route::resource('coursesession', CourseSessionController::class);
-// Route::resource('usercourse', UserCourseController::class);
+Route::get('/manageCourse', [ViewController::class, 'showManageCoursePage']);

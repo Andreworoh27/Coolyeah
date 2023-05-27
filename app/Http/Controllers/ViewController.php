@@ -15,7 +15,6 @@ class ViewController extends Controller
             return view('Home.home')->with('courses', Course::all());
             // return view('Home.home');
         } else {
-            // dd(Auth::check());
             return view('Template.navbar');
         }
     }
