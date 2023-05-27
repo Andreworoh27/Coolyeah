@@ -31,12 +31,15 @@
                     </div>
                 </div> --}}
                 <a href="/courselist" class="navbar-menu sign">Course list</a>
-                <a href="/manageCourse" class="navbar-menu sign">Manage Course</a>
+                @if (Auth::check() == true && Auth::user()->role == 'Admin')
+                    <a href="/manageCourse" class="navbar-menu sign">Manage Course</a>
+                @endif
 
             </div>
             <form class="searchbox" role="search" method="GET" action="/search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
-                <button class="btn-outline-success" type="submit"><img src="{{ Storage::url('img/search.png') }}"></button>
+                <button class="btn-outline-success" type="submit"><img
+                        src="{{ Storage::url('img/search.png') }}"></button>
             </form>
             <div class="navbar-menu-container">
                 @if (Auth::check() == false)
@@ -45,7 +48,8 @@
                 @else
                     <div class="dropdown">
                         {{-- {{dd(Storage::url('Profile Image/' . Auth::user()->image))}} --}}
-                        <img class="profilepic" src="{{ Storage::url('img/User Profiles/'.auth()->user()->profile_image) }}">
+                        <img class="profilepic"
+                            src="{{ Storage::url('img/User Profiles/' . auth()->user()->profile_image) }}">
                         <div class="dropdown-menu">
                             <b>Hi, {{ auth()->user()->name }}</b>
                             <hr class="solidmenu">

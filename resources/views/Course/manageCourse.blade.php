@@ -36,7 +36,6 @@
                             style="border: none;background-color:transparent">
                     </form>
                 </div>
-                {{-- @break --}}
             @endforeach
     @endif
 @endsection
