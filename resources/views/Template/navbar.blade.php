@@ -22,15 +22,17 @@
 
         <div class="navbar-content">
             <div class="navbar-menu-container">
-                <div class="dropdown">
+                {{-- <div class="dropdown">
                     <a href="#" class="navbar-menu sign">Courses</a>
                     <div class="dropdown-menu">
                         <a href="/#">Course a</a>
                         <a href="/#">Course b</a>
                         <a href="/#">Course c</a>
                     </div>
-                </div>
+                </div> --}}
+                <a href="/courselist" class="navbar-menu sign">Course list</a>
                 <a href="/manageCourse" class="navbar-menu sign">Manage Course</a>
+
             </div>
             <form class="searchbox" role="search" method="GET" action="/search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
