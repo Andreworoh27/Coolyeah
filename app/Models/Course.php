@@ -10,7 +10,7 @@ class Course extends Model
     use HasFactory;
     public function userCourse()
     {
-        return $this->hasMany(userCourse::class,"id","course_id");
+        return $this->hasMany(userCourse::class, "id", "course_id");
     }
     public function courseSessions()
     {

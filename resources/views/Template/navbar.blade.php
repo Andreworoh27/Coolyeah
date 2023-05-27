@@ -30,6 +30,7 @@
                         <a href="/#">Course c</a>
                     </div>
                 </div>
+                <a href="/manageCourse" class="navbar-menu sign">Manage Course</a>
             </div>
             <form class="searchbox" role="search" method="GET" action="/search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
