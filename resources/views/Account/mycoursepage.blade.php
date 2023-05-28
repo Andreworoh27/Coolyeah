@@ -1,36 +1,42 @@
 @extends('Template.navbar')
 
-@section('title', 'My Course')
+@section('title', 'Home')
 
 @section('content')
-<link rel="stylesheet" href="/css/myCourseStyle.css">
+    <link rel="stylesheet" href="/css/myCourseStyle.css">
 
-<header>MY COURSES</header>
-<div class="outside-my-course">
-    @if ($usercourses -> isEmpty())
-        <div><h1>you have not subscribe to any course</h1></div>
-    @else     
-        <div class ="container mt-4">
-            <div class="row row-cols-3">
-            @foreach ($usercourses as $usercourse)
-                <div class="col mb-4">
-                <a href="{{ url('course/' . $usercourse->course_id) }}">
+    <div class="container mb-3 mt-3">
+
+    </div>
+    <div class="container grid-container">
+        <h2 class="title">My Course : </h2>
+        <div class="row">
+            @foreach ($usercourses as $mycourse)
+                <div class="col-12 col-md-6 col-lg-4" style="min-height:50% ">
                     <div class="card">
-                        <img src="{{ Storage::url('img/Courses/' . $usercourse->course->course_image) }}" class="card-img-top" alt="Course-image">
+                        <img class="card-img-top courseimage"
+                            src="{{ Storage::url('img/Courses/' . $mycourse->course->course_image) }}" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $usercourse->course->course_name }}</h5>
-                            <p class="card-text">{{ $usercourse->course->course_description }}</p>
+                            <h5 class="card-title">{{ $mycourse->course->course_name }}</h5>
+                            <p class="card-text">{{ $mycourse->course->course_description }}</p>
+                        </br>
+                        <div class="button-container">
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ url('course/' . $mycourse->course->id) }}">Open Course</a>
+                            {{-- <div class="btn btn-sm btn-outline-secondary" >     --}}
+                            {{-- <div>{{ $course->course_subscriber }}</div> --}}
+                                    <form action="{{ url('usercourse/' . $mycourse->course->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="btn btn-sm btn-outline-secondary" value="Unsubscribe Course">
+                                    </form>
+                                {{-- </div> --}}
+                            </div>
                         </div>
                     </div>
-                </a>    
                 </div>
-                @endforeach
-            </div>
+            @endforeach
         </div>
-        <!-- <div class="mycourse">
-            <img src="{{ Storage::url('img/Courses/' . $usercourse->course->course_image) }}" alt="Course-image">
-        </div>
-            <div>{{ $usercourse->course->course_name }}</div> -->
-    @endif
-</div>
+    </div>
+
+    </div>
 @endsection
