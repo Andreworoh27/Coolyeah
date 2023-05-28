@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-    <link rel="stylesheet" href="/css/courseListStyle.css">
+    <link rel="stylesheet" href="/css/myCourseStyle.css">
 
     <div class="container mb-3 mt-3">
 
@@ -20,15 +20,17 @@
                             <h5 class="card-title">{{ $mycourse->course->course_name }}</h5>
                             <p class="card-text">{{ $mycourse->course->course_description }}</p>
                         </br>
+                        <div class="button-container">
                             <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ url('course/' . $mycourse->course->id) }}">Open Course</a>
-                            <div class=""btn btn-sm btn-outline-secondary"" >
-                                {{-- <div>{{ $course->course_subscriber }}</div> --}}
+                            {{-- <div class="btn btn-sm btn-outline-secondary" >     --}}
+                            {{-- <div>{{ $course->course_subscriber }}</div> --}}
                                     <form action="{{ url('usercourse/' . $mycourse->course->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <input type="submit" class="btn btn-sm btn-outline-secondary" value="Unsubscribe Course">
                                     </form>
-                                </div>
+                                {{-- </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
