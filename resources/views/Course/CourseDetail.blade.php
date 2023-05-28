@@ -3,31 +3,66 @@
 @section('title', 'Home')
 
 @section('content')
-<link rel="stylesheet" href="/css/courseDetailStyle.css">
+    <link rel="stylesheet" href="/css/courseDetailStyle.css">
     {{-- {{dd($CourseInfo)}} --}}
     @php
         $course = $CourseInfo[0];
         $subscribe = $CourseInfo[1];
+        $session = $CourseInfo[2];
     @endphp
+    <div class="outer-container">
 
-    <div class="outside-course-detail">
-    <div class="coursedetail">
-    <img src="{{ Storage::url('img/Courses/' . $course->course_image) }}" alt="Course-image">
+        <div class="course-info-container">
+
+            <div class="course-detail-image-container">
+                <img src="{{ Storage::url('img/Courses/' . $course->course_image) }}" alt="Course-image"
+                    class="course-detail-image">
+            </div>
+            <div class="course-detail-text-container">
+                <div class="course-detail-title">{{ $course->course_name }}</div>
+                @if ($course->rating == 0 && $course->course_subscriber == 0)
+                    <div class="course-detail-rating">no rating </div>
+                @else
+                    @php
+                        $rating = $course->course_rating / $course->course_subscriber;
+                    @endphp
+                    <div class="course-detail-rating">{{ number_format((float) $rating, 1, '.', '') }} </div>
+                @endif
+                <div class="course-detail-description">{{ $course->course_description }}</div>
+                <div class="subscribe-btn-container">
+                    <div class="subscribe">
+                        @if ($subscribe == false)
+                            <a href="{{ url('course/subscribe/' . $course->id) }}"><input type="submit"
+                                    value="Subscribe course" class="input-btn"></a>
+                        @else
+                            <form action="{{ url('usercourse/' . $course->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Unsubscribe Course" class="input-btn">
+                            </form>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-session-container">
+            <div class="session-container">
+                <div class="session-container-btn">
+                    @for ($i = 1; $i <= $course->course_session; $i++)
+                        <a href="{{ url('coursesession/' . $session[$i-1]->id) }}" class="session-link-btn">Session
+                            {{ $i }}</a>
+                    @endfor
+                </div>
+                <div class="session-content">
+                    @if (url()->full() == 'http://127.0.0.1:8000/course/1')
+                        <div>{{ $session[0]->session_description }}</div>
+                    @else
+                        @yield('course-session')
+                        {{-- <div>course custom</div> --}}
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
-    <div>{{ $course->course_name }}</div>
-    <div>{{ $course->course_description }}</div>
-    {{-- <div>{{ $course->course_rating }}</div> --}}
-    <div class="subscribe">
-    {{-- <div>{{ $course->course_subscriber }}</div> --}}
-    @if ($subscribe == false)
-        <a href="{{ url('course/subscribe/' . $course->id) }}"><input type="submit" value="Subscribe course"></a>
-    @else
-        <form action="{{ url('usercourse/' . $course->id) }}" method="post">
-            @csrf
-            @method('DELETE')
-            <input type="submit" value="Unsubscribe Course">
-        </form>
-    </div>
-    @endif
-</div>
 @endsection
