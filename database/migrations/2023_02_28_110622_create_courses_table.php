@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('course_image')->nullable();
             $table->double('course_rating')->nullable();
             $table->bigInteger('course_subscriber')->nullable();
+            $table->integer('course_session');
             $table->timestamps();
         });
     }
