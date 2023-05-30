@@ -23,9 +23,9 @@ html {
     transition: 0.5s;
     justify-content: center;
 }
-
 .c-img {
     object-fit: cover;
+    width: 100%;
 }
 
 .outside-course-list {

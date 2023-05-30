@@ -49,20 +49,32 @@
         <div class="course-session-container">
             <div class="session-container">
                 <div class="session-container-btn">
-                    @for ($i = 1; $i <= $course->course_session; $i++)
-                        <a href="{{ url('coursesession/' . $session[$i-1]->id) }}" class="session-link-btn">Session
-                            {{ $i }}</a>
-                    @endfor
-                </div>
-                <div class="session-content">
-                    @if (url()->full() == 'http://127.0.0.1:8000/course/1')
-                        <div>{{ $session[0]->session_description }}</div>
+                    @if (sizeof($session) == 0)
+                        <div>there is no sessions yet</div>
                     @else
-                        @yield('course-session')
-                        {{-- <div>course custom</div> --}}
+                        @for ($i = 1; $i <= $course->course_session; $i++)
+                            <a href="{{ url('coursesession/' . $session[$i - 1]->id) }}" class="session-link-btn">Session
+                                {{ $i }}</a>
+                            @if ($i + 1 > sizeof($session))
+                            @break
+                        @endif
+                    @endfor
+                @endif
+            </div>
+
+            <div class="session-content">
+                {{-- {{$course}} --}}
+
+                @if (url()->full() == route('course.show', ['course' => $course->id]))
+                    @if (sizeof($session) > 0)
+                        <div>{{ $session[0]->session_description }}</div>
                     @endif
-                </div>
+                @else
+                    @yield('course-session')
+                    {{-- <div>course custom</div> --}}
+                @endif
             </div>
         </div>
     </div>
+</div>
 @endsection
