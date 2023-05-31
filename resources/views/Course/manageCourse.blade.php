@@ -6,7 +6,7 @@
     @if (Auth::user()->role == 'Admin')
         <link rel="stylesheet" href="/css/manageCourseStyle.css">
         <div class="manage-game-container">
-            <a href="/game/create" class="add-game-link">Add Game</a>
+            <a href="/course/create" class="add-game-link">Add Course</a>
             <div class="game-container">
                 <div class="game-title">Course Name</div>
                 <div class="pegi-rating">Course Description</div>

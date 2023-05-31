@@ -45,21 +45,23 @@
     color: red;
 }
 .add-game-link {
+    margin-top: 1%;
     align-self: flex-end;
     margin-right: 20%;
     text-decoration: none;
     text-align: center;
-    border: 1px solid rgb(97, 28, 208);
+    border: 1px solid lightskyblue;
     border-radius: 10px;
     text-decoration: none;
     padding: 8px;
-    background-color: rgb(97, 28, 208);
+    background-color: lightskyblue;
     color: white;
 }
 .add-game-link:hover {
-    border: 1px solid rgb(97, 28, 208);
-    background-color: white;
-    color: rgb(97, 28, 208);
+    border: 1px solid lightskyblue;
+    background-color: rgb(94, 193, 255);
+    text-decoration: none;
+    color: white;
 }
 /* .game-genre {
     border: 1px solid rgb(190, 255, 190);

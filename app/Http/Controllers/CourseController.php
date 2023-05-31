@@ -7,6 +7,8 @@ use App\Models\CourseSession;
 use App\Models\UserCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
@@ -29,6 +31,7 @@ class CourseController extends Controller
     public function create()
     {
         //
+        return view('Course.addCourse');
     }
 
     /**
@@ -40,6 +43,29 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'CourseName' => 'required',
+            'CourseDescription' => 'required',
+            'photo' => 'required|image|mimes:jpeg,png,jpg',
+            'CourseSession' => 'numeric|min:1',
+        ]);
+
+        $courseName = $request->CourseName;
+        $courseDescription = $request->CourseDescription;
+        $courseImage = $request->file('photo');
+        $courseSession = $request->CourseSession;
+
+        Storage::putFileAs('/public/img/Courses/', $courseImage, $courseImage->getClientOriginalName());
+
+        DB::table('courses')->insert([
+            'course_name' => $courseName,
+            'course_image' => $courseImage->getClientOriginalName(),
+            'course_session' => $courseSession,
+            'course_description' => $courseDescription,
+            'created_at' => now()
+        ]);
+
+        return redirect('/');
     }
 
     /**
