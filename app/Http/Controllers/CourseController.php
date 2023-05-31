@@ -98,6 +98,7 @@ class CourseController extends Controller
     public function edit($id)
     {
         //
+        return view('Course.editCourse')->with('course', Course::find($id));
     }
 
     /**
@@ -110,6 +111,37 @@ class CourseController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'CourseName' => 'required',
+            'CourseDescription' => 'required',
+            'photo' => 'image|mimes:jpeg,png,jpg',
+            'CourseSession' => 'numeric|min:1',
+        ]);
+        $courseName = $request->CourseName;
+        $courseDescription = $request->CourseDescription;
+        $courseImage = $request->file('photo');
+        $courseSession = $request->CourseSession;
+        $course = Course::find($id);
+
+        if ($courseImage != null) {
+            if (Storage::exists('/public/img/Courses/' . $course->course_image)) {
+                Storage::delete('/public/img/Courses/' . $course->course_image);
+            }
+            $courseImage = $request->getClientOriginalName();
+            Storage::putFileAs('/public/img/Courses/', $courseImage, $courseImage->getClientOriginalName());
+        } else {
+            $courseImage = $course->course_image;
+        }
+
+        DB::table('courses')->where('id', $course->id)->update([
+            'course_name' => $courseName,
+            'course_image' => $courseImage,
+            'course_session' => $courseSession,
+            'course_description' => $courseDescription,
+            'updated_at' => now()
+        ]);
+
+        return redirect('/');
     }
 
     /**
