@@ -29,7 +29,7 @@
                     <div class="course-detail-rating">{{ number_format((float) $rating, 1, '.', '') }} </div>
                 @endif
                 <div class="course-detail-description">{{ $course->course_description }}</div>
-                <div class="subscribe-btn-container">
+                <div class="btn-container">
                     <div class="subscribe">
                         @if ($subscribe == false)
                             <a href="{{ url('course/subscribe/' . $course->id) }}"><input type="submit"
@@ -42,6 +42,12 @@
                             </form>
                         @endif
                     </div>
+                    @if (Auth::user()->role == 'Admin')
+                        <div class='edit-course'>
+                            <a href="{{ url('course/' . $course->id . '/edit') }}"><input type="submit"
+                             value="Edit Course" class="input-btn"></a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
