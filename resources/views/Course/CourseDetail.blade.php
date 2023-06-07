@@ -68,18 +68,27 @@
                 @endif
             </div>
 
-            <div class="session-content">
-                {{-- {{$course}} --}}
+            <div class="session-content-container">
+                <div class="session-content">
+                    <h2>WHAT YOU WILL LEARN</h2>
+                    {{-- {{$course}} --}}
 
-                @if (url()->full() == route('course.show', ['course' => $course->id]))
-                    @if (sizeof($session) > 0)
-                        <div>{{ $session[0]->session_description }}</div>
+                    @if (url()->full() == route('course.show', ['course' => $course->id]))
+                        @if (sizeof($session) > 0)
+                            <div>{{ $session[0]->session_description }}</div>
+                         @endif
+                    @else
+                        @yield('course-session')
+                        {{-- <div>course custom</div> --}}
                     @endif
-                @else
-                    @yield('course-session')
-                    {{-- <div>course custom</div> --}}
-                @endif
+                </div>
+                <div class="session-material">
+                    <h2>Session Materials</h2>
+                    <!-- Insert Session Material(VBL,Links,dsb) -->
+                </div>
             </div>
+
+            
         </div>
     </div>
 </div>
