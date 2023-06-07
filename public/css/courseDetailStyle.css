@@ -107,10 +107,12 @@
     border: 1px solid black;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-bottom:5rem;
 }
 .session-container-btn{
     width: 100%;
@@ -128,24 +130,13 @@
     border-radius: 10px;
 }
 
-.session-content-container{
-    display:flex;
-    flex-direction:row;
-    width: 100%;
-    height: 100%;
-}
-
 .session-content{
     padding: 1% ;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    width: 80%;
-    height: auto;
+    margin: 1% 0;
+    border: 1px solid black;
+    width: 100%;
+    height:100%;
+    display:flex;
+    justify-content:space-between;
 }
 
-.session-material{
-    padding: 1%;
-    border-top: 1px solid black;
-    width: 20%;
-    height: auto;
-}

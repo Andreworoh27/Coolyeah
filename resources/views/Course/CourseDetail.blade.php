@@ -68,24 +68,49 @@
                 @endif
             </div>
 
-            <div class="session-content-container">
-                <div class="session-content">
-                    <h2>WHAT YOU WILL LEARN</h2>
-                    {{-- {{$course}} --}}
+            <div class="session-content">
+                {{-- {{$course}} --}}
 
-                    @if (url()->full() == route('course.show', ['course' => $course->id]))
-                        @if (sizeof($session) > 0)
-                            <div>{{ $session[0]->session_description }}</div>
-                         @endif
-                    @else
-                        @yield('course-session')
-                        {{-- <div>course custom</div> --}}
+                @if (url()->full() == route('course.show', ['course' => $course->id]))
+                    @if (sizeof($session) > 0)
+                        @php
+                            $sessionDetail = $CourseInfo[2][0];
+                            $outlines = explode('#', $sessionDetail->session_topics);
+                        @endphp
+                        <link rel="stylesheet" href="/css/courseSessionStyle.css">
+                        <div class="session-container-kanan">
+                            <div class="session-title">{{ $sessionDetail->session_title }}</div>
+                            <ul>
+                                @foreach ($outlines as $outline)
+                                    <li class="session-outline">{{ $outline }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="session-container-kiri">
+                            <div>Session Sources : </div>
+                            <ul>
+                                <li>
+                                    <a href="{{ $sessionDetail->session_material_link }}" target="_blank">
+                                        Session Slides Material
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ $sessionDetail->session_Vidio_link }}" target="_blank">
+                                        Session Vidio Link
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ $sessionDetail->session_book_link }}" target="_blank">
+                                        Session Book Link
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     @endif
-                </div>
-                <div class="session-material">
-                    <h2>Session Materials</h2>
-                    <!-- Insert Session Material(VBL,Links,dsb) -->
-                </div>
+                @else
+                    @yield('course-session')
+                    {{-- <div>course custom</div> --}}
+                @endif
             </div>
 
             

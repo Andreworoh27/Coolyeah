@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('course_sessions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('course_id');
-            $table->string('session_description');
+            $table->string('session_title');
+            $table->string('session_topics');
             $table->string('session_material_link', 1000);
             $table->string('session_vidio_link', 1000);
             $table->string('session_book_link', 1000);
