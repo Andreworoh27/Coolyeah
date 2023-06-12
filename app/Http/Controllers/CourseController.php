@@ -122,13 +122,13 @@ class CourseController extends Controller
         $courseImage = $request->file('photo');
         $courseSession = $request->CourseSession;
         $course = Course::find($id);
-
         if ($courseImage != null) {
             if (Storage::exists('/public/img/Courses/' . $course->course_image)) {
+                dd("exist");
                 Storage::delete('/public/img/Courses/' . $course->course_image);
             }
-            $courseImage = $request->getClientOriginalName();
             Storage::putFileAs('/public/img/Courses/', $courseImage, $courseImage->getClientOriginalName());
+            $courseImage = $courseImage->getClientOriginalName();
         } else {
             $courseImage = $course->course_image;
         }
