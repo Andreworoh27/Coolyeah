@@ -35,3 +35,4 @@ Route::resource('usercourse', UserCourseController::class);
 Route::get('/courselist', [ViewController::class, 'showCourseListPage']);
 Route::get('manageCourse', [ViewController::class, 'showManageCoursePage']);
 Route::resource('coursesession', CourseSessionController::class);
+Route::post('/user/{id}/update-password', [UserController::class, 'updatePasswordOnly'])->name('update-password');

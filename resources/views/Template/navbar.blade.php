@@ -38,8 +38,8 @@
             </div>
             <form class="searchbox" role="search" method="GET" action="/search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
-                <button class="btn-outline-success" type="submit"><img
-                        src="{{ Storage::url('img/search.png') }}"></button>
+                <button class="btn-outline-success" type="submit"><img src="{{ Storage::url('img/search.png') }}"
+                        alt="search icon"></button>
             </form>
             <div class="navbar-menu-container">
                 @if (Auth::check() == false)
@@ -49,11 +49,12 @@
                     <div class="dropdown">
                         {{-- {{dd(Storage::url('Profile Image/' . Auth::user()->image))}} --}}
                         <img class="profilepic"
-                            src="{{ Storage::url('img/User Profiles/' . auth()->user()->profile_image) }}">
+                            src="{{ Storage::url('img/User Profiles/' . auth()->user()->profile_image) }}"
+                            alt="user profile">
                         <div class="dropdown-menu">
                             <b>Hi, {{ auth()->user()->name }}</b>
                             <hr class="solidmenu">
-                            <a href="/user">Your Profile</a>
+                            <a href="{{ url('user/' . auth()->user()->id) .'/edit'}}">Your Profile</a>
                             <a href="/usercourse">My Courses</a>
                             <a href="/logout">Log Out</a>
                         </div>

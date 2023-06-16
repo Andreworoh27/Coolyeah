@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -16,7 +20,6 @@ class UserController extends Controller
     public function index()
     {
         //
-        return view("Account.profilePage");
     }
 
     /**
@@ -97,6 +100,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        return view("Account.profilePage");
     }
 
     /**
@@ -109,6 +113,41 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validation = null;
+        if ($request->email == Auth::user()->email) {
+            $validation = Validator::make($request->all(), [
+                'name' => 'required',
+                'userpic' => 'image',
+            ]);
+        } else {
+            $validation = Validator::make($request->all(), [
+                'name' => 'required',
+                'userpic' => 'image',
+                'email' => 'required|email|unique:users,email',
+            ]);
+        }
+        if ($validation->fails()) {
+            return back()->withErrors($validation);
+        }
+
+        $Photo = $request->file('userpic');
+        $user = User::find(auth()->user()->id);
+
+        if ($Photo != null) {
+            if (Storage::exists('public/img/User Profiles/' . $user->image)) {
+                Storage::delete('public/img/User Profiles/' . $user->image);
+            }
+            $Photo = $request->getClientOriginalName();
+            Storage::putFileAs('/public/img/User Profiles', $Photo, $Photo->getClientOriginalName());
+            $user->image = $Photo;
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        $user->save();
+
+        return redirect('/');
     }
 
     /**
