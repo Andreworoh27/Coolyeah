@@ -68,6 +68,9 @@ a[type="button"] {
     font-weight: 700;
     cursor: pointer;
     outline: none;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: auto 1%;
 }
 
 a[type="button"]:hover {
