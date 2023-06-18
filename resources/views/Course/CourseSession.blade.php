@@ -15,20 +15,20 @@
         </ul>
     </div>
     <div class="session-container-kiri">
-        <div>Session Sources : </div>
+        <div class = "learning-materials-title">Session Sources : </div>
         <ul>
             <li>
-                <a href="{{ $sessionDetail->session_material_link }}" target="_blank">
+                <a href="{{ $sessionDetail->session_material_link }}" class = "learning-materials-links" target="_blank">
                     Session Slides Material
                 </a>
             </li>
             <li>
-                <a href="{{ $sessionDetail->session_Vidio_link }}" target="_blank">
+                <a href="{{ $sessionDetail->session_Vidio_link }}" class = "learning-materials-links" target="_blank">
                     Session Vidio Link
                 </a>
             </li>
             <li>
-                <a href="{{ $sessionDetail->session_book_link }}" target="_blank">
+                <a href="{{ $sessionDetail->session_book_link }}" class = "learning-materials-links" target="_blank">
                     Session Book Link
                 </a>
             </li>

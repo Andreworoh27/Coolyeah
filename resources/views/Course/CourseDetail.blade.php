@@ -59,7 +59,7 @@
                         <div>there is no sessions yet</div>
                     @else
                         @for ($i = 1; $i <= $course->course_session; $i++)
-                            <a href="{{ url('coursesession/' . $session[$i - 1]->id) }}" class="session-link-btn">Session
+                                <a href="{{ url('coursesession/' . $session[$i - 1]->id) }}" class="session-link-btn">Session
                                 {{ $i }}</a>
                             @if ($i + 1 > sizeof($session))
                             @break
